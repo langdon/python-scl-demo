@@ -7,9 +7,11 @@ Vagrant.configure(2) do |config|
   config.vm.define "python-demo" do |server|
     server.vm.box = "rhel-server-7"
 
-    #server.cache.enable :box
-    server.cache.enable :yum
-    
+    if Vagrant.has_plugin?('vagrant-cachier')
+    	#server.cache.enable :box
+    	server.cache.enable :yum
+    end
+
     server.vm.provision "shell", inline: "sudo subscription-manager repos --disable *-rt-* --disable *-eus* --disable *-rs-* --disable *-ha-*"
     server.vm.provision "shell", inline: "sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms --enable rhel-7-server-optional-rpms"
     server.vm.provision "shell", inline: "sudo yum -y update"
