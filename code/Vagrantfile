@@ -1,6 +1,4 @@
 Vagrant.configure(2) do |config|
-  
-# Source: https://github.com/martinwoodward/csharpworkshop
   #
   # Getting started on RedHat Enterprise Linux (RHEL) with vagrant
   #
